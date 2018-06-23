@@ -5,6 +5,11 @@
 <div id="app">
 	<h1 v-once>{{ title }}</h1>
 	<p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+	<hr>
+	<!-- htmlタグとして認識されない -->
+	<p>{{ finishedLink }}</p>
+	<!-- 'v-html'を使用すればhtmlタグとして認識されるが、XSS可能になるので注意 -->
+	<p v-html="finishedLink"></p>
 </div>
 
 <script>
@@ -12,7 +17,8 @@
 		el: '#app',
 		data: {
 			title: 'Hello World!',
-			link: 'http://google.com'
+			link: 'http://google.com',
+			finishedLink: '<a href="http://google.com">Google</a>'
 		},
 		methods: {
 			sayHello() {
