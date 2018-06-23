@@ -1,0 +1,24 @@
+
+<!-- Put this in the HTML section in JSFiddle! -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app">
+	<!-- 要素内からのdataへのアクセスは'{{}}' -->
+	<!-- 属性内からのdataへのアクセスは属性に'v-bind:'をつける('v-bind:'は':'に省略可能) -->
+	<p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+</div>
+
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			title: 'Hello World!',
+			link: 'http://google.com'
+		},
+		methods: {
+			sayHello() {
+				return this.title; // プロパティへのアクセスには'this'を使う
+			}
+		}
+	})
+</script>
