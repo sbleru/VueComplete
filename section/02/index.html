@@ -3,24 +3,26 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
 <div id="app">
-	<h1 v-once>{{ title }}</h1>
-	<p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
-	<hr>
-	<p v-html="finishedLink"></p>
+	<button v-on:click="increase">Click me</button>
+	<p>{{ count }}</p>
+	<p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
 </div>
 
 <script>
 	new Vue({
 		el: '#app',
 		data: {
-			title: 'Hello World!',
-			link: 'http://google.com',
-			finishedLink: '<a href="http://google.com">Google</a>'
+			count: 0,
+			x: 0,
+			y: 0
 		},
 		methods: {
-			sayHello() {
-				this.title = "Hello!";
-				return this.title;
+			increase: function() {
+				this.count++;
+			},
+			updateCoordinates: function(event) {
+				this.x = event.clientX;
+				this.y = event.clientY;
 			}
 		}
 	})
